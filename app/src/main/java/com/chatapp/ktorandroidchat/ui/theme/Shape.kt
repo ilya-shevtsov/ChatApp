@@ -1,4 +1,4 @@
-package com.plcoding.ktorandroidchat.ui.theme
+package com.chatapp.ktorandroidchat.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

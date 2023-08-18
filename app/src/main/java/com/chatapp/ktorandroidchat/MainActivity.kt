@@ -1,4 +1,4 @@
-package com.plcoding.ktorandroidchat
+package com.chatapp.ktorandroidchat
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
