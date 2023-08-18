@@ -1,10 +1,17 @@
 package com.chatapp.presentation.chat
 
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Send
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -78,11 +85,34 @@ fun ChatScreen(
                                 val triangleHeight = 20.dp.toPx()
                                 val triangleWidth = 25.dp.toPx()
                                 val trianglePath = Path().apply {
-                                    if(isOwnMessage){
-                                        
+                                    if (isOwnMessage) {
+                                        moveTo(size.width, size.height - cornerRadius)
+                                        lineTo(size.width, size.height + triangleHeight)
+                                        lineTo(
+                                            size.width - triangleWidth,
+                                            size.height - cornerRadius
+                                        )
+                                        close()
+                                    } else {
+                                        moveTo(0f, size.height - cornerRadius)
+                                        lineTo(0f, size.height + triangleHeight)
+                                        lineTo(
+                                            triangleWidth,
+                                            size.height - cornerRadius
+                                        )
+                                        close()
                                     }
                                 }
+                                drawPath(
+                                    path = trianglePath,
+                                    color = if (isOwnMessage) Color.Green else Color.Gray
+                                )
                             }
+                            .background(
+                                color = if (isOwnMessage) Color.Green else Color.Gray,
+                                shape = RoundedCornerShape(10.dp)
+                            )
+                            .padding(8.dp)
                     ) {
                         Text(
                             text = message.username,
@@ -102,9 +132,25 @@ fun ChatScreen(
                         )
                     }
                 }
-
+            }
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            TextField(
+                value = viewModel.messageText.value,
+                onValueChange = viewModel::onMessageChange,
+                placeholder = {
+                    Text(text = "Enter a massage")
+                },
+                modifier = Modifier.weight(1f)
+            )
+            IconButton(onClick = viewModel::sendMessage) {
+                Icon(
+                    imageVector = Icons.Default.Send,
+                    contentDescription = "Send"
+                )
             }
         }
     }
-
 }
