@@ -7,5 +7,5 @@ The backend is written on Ktor and uses MangoDB. Here is a link to the Ktor Back
 
 # Demonstration
 
-<img src="REAMMEImages/videodemonstration.gif" width="1000">
+<img src="REAMMEImages/videodemonstration.gif" width="500">
 
