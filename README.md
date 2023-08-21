@@ -1,5 +1,5 @@
 # ChatApp
-This is a simple live group chat app. It allows you to chat with multiple people at the same time. The project is written using: WebSocket, Dagger Hilt, MVVM Compose. 
+This is a simple live group chat app. It allows you to chat with multiple people at the same time. The project is written using: WebSocket, Dagger Hilt, MVVM and Compose. 
 
 The backend is written on Ktor and uses MangoDB. Here is a link to the Ktor Backend for this project: [backend](https://github.com/ilya-shevtsov/ChatAppBackend)
 
